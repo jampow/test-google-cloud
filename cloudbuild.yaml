@@ -1,13 +1,13 @@
 steps:
   - name: gcr.io/cloud-builders/docker
-    entrypoint: bash
+    entrypoint:  '_GCR_HOSTNAME=$_GCR_HOSTNAME'
     args:
-      - '-c'
-      - '_GCR_HOSTNAME=$_GCR_HOSTNAME'
       - 'PROJECT_ID=$PROJECT_ID'
       - 'REPO_NAME=$REPO_NAME'
       - '_SERVICE_NAME=$_SERVICE_NAME'
       - 'COMMIT_SHA=$COMMIT_SHA'
+      - bash
+      - '-c'
       - make
       - build
     id: Build
