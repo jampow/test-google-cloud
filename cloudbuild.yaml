@@ -3,13 +3,13 @@ steps:
     entrypoint:  bash
     args:
       - '-c'
-      - 'export _GCR_HOSTNAME=\$_GCR_HOSTNAME;'
+      - '"export _GCR_HOSTNAME=\$_GCR_HOSTNAME;'
       - 'export PROJECT_ID=\$PROJECT_ID;'
       - 'export REPO_NAME=\$REPO_NAME;'
       - 'export _SERVICE_NAME=\$_SERVICE_NAME;'
       - 'export COMMIT_SHA=\$COMMIT_SHA;'
       - make
-      - build
+      - 'build"'
     id: Build
   - name: gcr.io/cloud-builders/docker
     args:
